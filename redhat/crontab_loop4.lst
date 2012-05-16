@@ -1,0 +1,16 @@
+MAILTO=root
+# Crontab created 2011-11-23
+# Modified: 2012-03-01 by Cameron Maxwell
+
+# (d)encrypting scripts for AP project
+*/5 * * * * /usr/local/loop4/bin/mft-ap-encryption.sh
+*/5 * * * * /usr/local/loop4/bin/mft-ap-decryption.sh
+
+# FTP file transfer to Qantas FTP server for AP project - These are not needed as they are handled by MFT, even though FTP is risky in MFT..
+# */5 * * * * /usr/local/loop4/bin/mft-ap-qantas-send.sh
+# */5 * * * * /usr/local/loop4/bin/mft-ap-qantas-retrieve.sh
+
+# Trax atomic move scripts
+45 * * * * /usr/local/loop4/bin/mft-atomic-move-trax-detail.sh
+45 * * * * /usr/local/loop4/bin/mft-atomic-move-trax-header.sh
+

@@ -1,0 +1,43 @@
+
+
+# PrecedaAD needs files in the "processed" directory renamed or it will fail.
+# 0-58/2 * * * * /usr/local/jboss/bin/precedaad.sh
+
+# Send Harddisk usage statistics
+# 0 9 * * 2 /usr/local/redhat/bin/stats-df.sh
+
+# Airman filters Airman/In to transfer to Airman/Out 
+0-58/2 * * * * /usr/local/redhat/bin/airman-filter.sh
+
+# Airman-filtered files emailed to Airbus
+0 0-22/2 * * * /usr/local/redhat/bin/airman-mail.sh
+
+
+# MFT consumer check for Rocade (only uncomment when mft is running on this server)
+10,20,30,40,50,58 * * * * /usr/local/redhat/bin/mft-consumer-check.sh                           
+
+# Log archiving
+15 13 * * *  /usr/local/redhat/bin/archive-logs-v3.sh
+
+# Jetmax - Move from temp folder into the production folder 
+10 0,12 * * * /usr/local/redhat/bin/jetmax/jetmax-move.sh
+
+# CommBiz (CBA) send script, i.e. send files to CommBiz
+0 6,10,14,18 * * 1-5 /usr/local/redhat/bin/commbiz-send.sh
+
+# CommBiz (CBA) retrieve script, i.e. retrieve files from CommBiz
+30 6,10,14,18 * * 1-5 /usr/local/redhat/bin/commbiz-retrieve.sh
+
+# Archive JFIDS data files
+#10 2 * * * /opt/base2/bin/archive_jfds.sh
+
+# Manual JFIDS alerts
+* * * * * /opt/base2/bin/jfids-mail-minute-report.sh
+
+# Temporary JFIDS minutely checking
+#* * * * * /opt/base2/bin/check_jfids_input.sh
+#* * * * * /opt/base2/bin/check_jfids_output.sh
+
+# Check MFT system queues
+*/30 * * * * /opt/base2/bin/check_mft_system_queues.sh
+
